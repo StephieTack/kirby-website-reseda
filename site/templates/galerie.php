@@ -9,8 +9,8 @@
   To fetch the content from each field we call the field name as a
   method on the `$page` object, e.g. `$page->title()`.
 
-  This example template makes use of the `$gallery` variable defined
-  in the `album.php` controller (/site/controllers/album.php)
+  This default template must not be removed. It is used whenever Kirby
+  cannot find a template with the name of the content file.
 
   Snippets like the header and footer contain markup used in
   multiple templates. They also help to keep templates clean.
@@ -19,15 +19,12 @@
 */
 ?>
 <?php snippet('header') ?>
+
 <article>
-
-  <div class="grid">
-
-    <div class="column" style="--columns: 4">
-      <div class="text">
-        <?= $page->text() ?>
-      </div>
-    </div>
-
+  <h1 class="h1"><?= $page->title()->esc() ?></h1>
+  <div class="text">
+    <?= $page->text()->kt() ?>
+  </div>
 </article>
+
 <?php snippet('footer') ?>
